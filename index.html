@@ -14,15 +14,250 @@
         <p>I'm hosted with GitHub Pages.</p>
 
         <script type="application/processing">
-			void setup(){
-				size(200, 200);
-			}
-			
-    
-			void draw(){
-				background(50);
-				ellipse(mouseX, mouseY, 50, 50);
-			}
+
+
+
+
+
+            PFont font;
+            // Button coords
+            float b1X, b1Y, b2X, b2Y, b3X, b3Y,
+            b4X, b4Y, b5X, b5Y, b6X, b6Y;
+            float buttonSize;
+            color baseColor, strokeColor;
+            color highlightColor, bC1, bC2, bC3, bC4, bC5, bC6; 
+            boolean bOver1, bOver2, bOver3, bOver4, bOver5, bOver6 = false;
+            int s, timer;
+            
+          void setup() {
+            size(1000, 600, P2D);
+            
+            baseColor = color(255,255,255);
+            strokeColor = color(100,100,100);  
+            highlightColor = color(255, 0, 0);
+            bC1 = bC2 = bC3 = bC4 = bC5 = bC6 = strokeColor;
+            
+              b1X = (width*0.730);
+            b1Y = (height*0.425);
+              b2X = (width*0.730);
+            b2Y = (height*0.625);
+              b3X = (width*0.730);
+            b3Y = (height*0.825);
+            
+              b4X = (width*0.875);
+            b4Y = (height*0.425);
+              b5X = (width*0.875);
+            b5Y = (height*0.625);
+              b6X = (width*0.875);
+            b6Y = (height*0.825);
+            
+            buttonSize = 50;
+            
+            
+            //Creating a font 
+            font = createFont("Arial",20,true);
+            textFont(font,50);
+          }
+          
+          void draw() {
+            background(25);
+            s = second();
+            update(mouseX, mouseY);
+           
+            //Drawwing the hexagon button 
+            pushStyle();
+            pushMatrix();
+            stroke(bC1);
+            strokeWeight(8);
+            fill(baseColor);
+            polygon(b1X, b1Y, buttonSize, 6);  // Hexagon
+            popMatrix();
+            popStyle();
+            //Button Characters
+            fill(bC1);
+            text("1", b1X-15, b1Y+15);
+          
+          
+            ////Drawwing the hexagon button 
+            pushStyle();
+            pushMatrix();
+            stroke(bC2);
+            strokeWeight(8);
+            fill(baseColor);
+            polygon(b2X, b2Y, buttonSize, 6);  // Hexagon
+            popMatrix();
+            popStyle();
+            //Button Characters
+            fill(bC2);
+            text("2", b2X-15, b2Y+15);
+          
+             
+            //Drawwing the hexagon button 
+            pushStyle();
+            pushMatrix();
+            stroke(bC3);
+            strokeWeight(8);
+            fill(baseColor);
+            polygon(b3X, b3Y, buttonSize, 6);  // Hexagon
+            popMatrix();
+            popStyle();
+            //Button Characters
+            fill(bC3);
+            text("3", b3X-15, b3Y+15);
+          
+              
+            //Drawwing the hexagon button 
+            pushStyle();
+            pushMatrix();
+            stroke(bC4);
+            strokeWeight(8);
+            fill(baseColor);
+            polygon(b4X, b4Y, buttonSize, 6);  // Hexagon
+            popMatrix();
+            popStyle();
+            //Button Characters
+            fill(bC4);
+            text("4", b4X-15, b4Y+15);
+            
+              
+            //Drawwing the hexagon button 
+            pushStyle();
+            pushMatrix();
+            stroke(bC5);
+            strokeWeight(8);
+            fill(baseColor);
+            polygon(b5X, b5Y, buttonSize, 6);  // Hexagon
+            popMatrix();
+            popStyle();
+            //Button Characters
+            fill(bC5);
+            text("5", b5X-15, b5Y+15);
+          
+              
+            //Drawwing the hexagon button 
+            pushStyle();
+            pushMatrix();
+            stroke(bC6);
+            strokeWeight(8);
+            fill(baseColor);
+            polygon(b6X, b6Y, buttonSize, 6);  // Hexagon
+            popMatrix();
+            popStyle();
+            //Button Characters
+            fill(bC6);
+            text("6", b6X-15, b6Y+15);
+          
+          
+            
+            if (s == timer) {
+              bC1 = bC2 = bC3 = bC4 = bC5 = bC6 = color(100,100,100);
+            }
+            
+          }
+          
+          
+          
+          // Function to make any polygon you want
+          void polygon(float x, float y, float radius, int npoints) {
+            float angle = TWO_PI / npoints;
+            beginShape();
+            for (float a = 0; a < TWO_PI; a += angle) { 
+              float sx = x + cos(a) * radius;
+              float sy = y + sin(a) * radius;
+              vertex(sx, sy);
+            }
+            endShape(CLOSE);
+          }
+          
+          
+          void update(int x, int y) {
+            if ( overButton(b1X, b1Y, buttonSize) ) {
+              //bC1 = highlightColor;
+              bOver1 = true;
+            }
+            else if ( overButton(b2X, b2Y, buttonSize) ) {
+              //bC2 = highlightColor;
+              bOver2 = true;
+            }
+            else if ( overButton(b3X, b3Y, buttonSize) ) {
+             //strokeColor = colot(100, 100,100);
+              bOver3 = true;
+            }
+            else if ( overButton(b4X, b4Y, buttonSize) ) {
+             //strokeColor = colot(100, 100,100);
+              bOver4 = true;
+            }
+            else if ( overButton(b5X, b5Y, buttonSize) ) {
+             //strokeColor = colot(100, 100,100);
+              bOver5 = true;
+            }
+            else if ( overButton(b6X, b6Y, buttonSize) ) {
+             //strokeColor = colot(100, 100,100);
+              bOver6 = true;
+            }
+            else {
+              bOver1 = bOver2 = bOver3 = bOver4 = bOver5 = bOver6 = false;
+            }
+          }
+          
+          
+          void mousePressed() {
+            if (bOver1) {
+               bC1 = highlightColor;
+               timer = s + 2;
+               if (timer > 60){
+                 timer = 3;
+               }
+            }
+            else if (bOver2) {
+               bC2 = highlightColor;
+               timer = s + 2;
+               if (timer > 60){
+                 timer = 3;
+               }
+            }
+            else if (bOver3) {
+               bC3 = highlightColor;
+               timer = s + 2;
+               if (timer > 60){
+                 timer = 3;
+               }
+            }
+            else if (bOver4) {
+               bC4 = highlightColor;
+               timer = s + 2;
+               if (timer > 60){
+                 timer = 3;
+               }
+            }
+            else if (bOver5) {
+               bC5 = highlightColor;
+               timer = s + 2;
+               if (timer > 60){
+                 timer = 3;
+               }
+            }
+            else if (bOver6) {
+               bC6 = highlightColor;
+               timer = s + 2;
+               if (timer > 60){
+                 timer = 3;
+               }
+            }
+          }
+          
+          
+          boolean overButton(float x, float y, float diameter)  {
+            float disX = x - mouseX;
+            float disY = y - mouseY;
+            if (sqrt(sq(disX) + sq(disY)) < diameter/2 ) {
+              return true;
+            } else {
+              return false;
+            }
+          }
+
+
 		</script>
 		<canvas> </canvas>
 
