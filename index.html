@@ -1,12 +1,31 @@
 <!DOCTYPE html>
+
 <html>
     <head>
-        <title> Title of the document </title>
+        <title> CS 3366 P1 Documentation  </title>
+
+         <!-- Load the Processing.js library -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
+
     <head>
 
     <body style="background-color:rgb(69, 69, 69);">
         <h1>Hello World</h1>
         <p>I'm hosted with GitHub Pages.</p>
+
+        <script type="application/processing">
+			void setup(){
+				size(200, 200);
+			}
+			
+    
+			void draw(){
+				background(50);
+				ellipse(mouseX, mouseY, 50, 50);
+			}
+		</script>
+		<canvas> </canvas>
+
     </body>
 
 </html>
