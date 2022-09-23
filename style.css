@@ -19,7 +19,7 @@ input,select{vertical-align:middle}
 body,html{background-color:#FFF}
 header{background:#986f6f;padding:10px 30px;margin:auto;position:fixed;left:0;right:0;top:0;z-index:999;height:40px}
 nav{display:inline-block}
-nav ul li a{background:#fff;padding:2px 6px;font-size:14px;text-decoration:none;font-weight:bold;color:rgb(68, 51, 51);border-radius:5px}
+nav ul li a{background:#fff;padding:2px 6px;font-size:14px;text-decoration:none;font-weight:bold;color:#443333;border-radius:5px}
 nav ul li a:hover{color:#000}
 nav ul li{display:inline-block;margin:10px}
 nav ul{list-style:none}
@@ -29,11 +29,11 @@ footer{background:rgb(68, 51, 51);max-width:1000px;margin:0 -20px;clear:both;tex
 footer p{padding:20px;color:#FFF}
 address{padding:10px 20px 30px 10px}
 aside > div{margin:10px auto;background:rgb(68, 51, 51);min-height:150px;padding:30px 10px;text-align:center;color:#FFF}
-a#logo{vertical-align:middle;font-size:40px;color:rgb(68, 51, 51);font-weight:bold;display:block;text-decoration:none;text-align:center;line-height:40px;padding:60px 5px}
+a#logo{vertical-align:middle;font-size:40px;color:#443333;font-weight:bold;display:block;text-decoration:none;text-align:center;line-height:40px;padding:60px 5px}
 body > section{max-width:1000px;margin:auto;padding:30px 0px;border-bottom:1px solid #999;color:#333}
 #sidebarBackTop{background:#832828;color:#FFF;opacity:0.8;cursor:pointer;display:block;padding:5px}
 #sidebar a.back2Top{text-decoration:none;text-align:center;background:rgb(68, 51, 51);color:#FFF;font-weight:bold;padding:5px;display:block}
-#sidebar a.back2Top:hover{background:rgb(102, 68, 68)}
+#sidebar a.back2Top:hover{background:#664444}
 #sidebarContent{width:300px;background:#c19d9d;padding:10px}
 footer a{color:#FFF}
 #main{margin-left:320px}
@@ -45,9 +45,9 @@ footer a{color:#FFF}
 #headerRight{height:40px}
 #sidebar{float:left;position:absolute}
 #page{padding:20px}
-#menuToggle,#mobileMenuToggle{background:#FFF;cursor:pointer;display:inline-block;font-size:40px;width:40px;font-weight:bold;text-align:center;height:40px;line-height:40px;color:#344;border-radius:10px}
+#menuToggle,#mobileMenuToggle{background:#FFF;cursor:pointer;display:inline-block;font-size:40px;width:40px;font-weight:bold;text-align:center;height:40px;line-height:40px;color:#443333;border-radius:10px}
 #mobileMenuToggle,#mobileLogo{vertical-align:middle;display:none;font-size:30px}
-#menuToggle:hover{color:#FFF;background:rgb(68, 51, 51)}
+#menuToggle:hover{color:#FFF;background:#443333}
 .socialButtons{float:right;padding-top:8px}
 .socialButtons a{display:inline-block;cursor:pointer;background:#0570e6;padding:2px;width:33px;text-align:center;height:20px;font-weight:bold;color:#FFF;text-decoration:none;line-height:20px;font-size:20px;border-radius:5px;vertical-align:middle}
 .socialButtons a.linkedin{background:#24568e}
@@ -67,13 +67,13 @@ footer a{color:#FFF}
 .stick #sidebarContent{bottom:auto}
 a#logo{font-size:20px;line-height:20px;padding:10px 5px}
 aside > div{min-height:20px;padding:10px}
-.sidebarToggle #menuToggle{background:rgb(68, 51, 51);color:#FFF}
+.sidebarToggle #menuToggle{background:#443333;color:#FFF}
 }
 @media screen and (max-width:600px){#headerLeft{float:right}
 #headerRight{height:auto;position:absolute;width:auto;top:46px;background:#986f6f;left:0;display:none}
 .showMobileMenu #headerRight{display:block}
 nav ul li a{display:block;background:transparent;color:#FFF;text-align:center;font-size:16px;padding:3px 29px;line-height:25px}
-.showMobileMenu #mobileMenuToggle{background:rgb(68, 51, 51);color:#FFF}
+.showMobileMenu #mobileMenuToggle{background:#443333;color:#FFF}
 nav ul li{display:block;margin:0}
 .socialButtons{display:none}
 header{padding:3px 10px}
