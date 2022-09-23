@@ -1,336 +1,161 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://html5-templates.com/" />
+    <title>Simple Website Template with Sticky Sidebar</title>
+    <meta name="description" content="Free responsive website HTML theme with sticky sidebar for both desktop and mobile. ">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+<header>
+	<div id="header">
+		<div class="socialButtons">
+			<a class="facebook" href="https://www.facebook.com/htmlcoding">f</a>
+			<a class="linkedin" href="https://www.linkedin.com/in/ferencdenes/">in</a>
+			<a class="youtube" href="https://www.youtube.com/channel/UCn38Jw1sJzbjVHO95Zp0Sww/videos">&#128898;</a>
+			<a class="twitter" href="https://twitter.com/RuwixCube">
+			
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
 
-<html>
-    <head>
-        <title> CEmfinger P1 </title>
-
-         <!-- Load the Processing.js library -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
-    <head>
-
-      <style>
-        table, th, td {
-          border:1px solid rgba(0, 0, 0, 0.001);  
-          text-align: left;
-        }
-      </style>
-
-    <body style="background-color:rgb(200, 200, 200);">
-
-        <h1> Project 1: Elevator Interface </h1>
-            <p><strong> This website was made to cover key points and requirements invloved in CS 3366 Elevator & Door Design </strong></p>
-            <p> Cameron T Emfinger</p>
-            <p> TTU Fall 2022</p>
-
-
-            <table style="width:100%">
-              <tr>
-                <th>
-                  <h2>Outside picture of elevator</h2>
-                  <img src="Outside_Elevator.jpg" alt="image is not available" style="width:238px;height:317px;">
-                </th>
-                <th>
-                  <h2>Picture of the Elevator Interface</h2>
-                  <img src="Elevator_Interface.jpg" alt="image is not available" style="width:238px;height:317px;">
-                </th>
-              </tr>
-              <tr>
-                <td>
-                  <p><strong>Issues with the Outside Interface:</strong></p>
-                  <p style="padding-left: 40px;">No braille for the visually impaired</p>
-                </td>
-                <td>
-                  <p><strong>Issues with the Inside Interface:</strong></p>
-                  <p style="padding-left: 40px;">No indication of current floor</p>
-                  <p style="padding-left: 40px;">Alarm and Stop buttons too close to floor buttons</p>
-                  <p style="padding-left: 40px;">No braille for the following:</p>
-                  <ul>
-                    <ul>
-                      <li>Open Door Button</li>
-                      <li>Alarm Button</li>
-                      <li>Stop Button</li>
-                    </ul>
-                  </ul>
-                </td>
-              </tr>
-            </table>
-
-            <h2> Visual of Elevator in Operation </h2>
-            <img src="Operation.gif" alt="image is not available" style="width:238px;height:317px;">
-
-            <h2> Some commone things used on an elevator </h2>
-            <p><strong> Most Common: </strong></p>
-            <p> Button to open elevator and initiate want to go up or down </p>
-            <p> Buttons on the inside to declare what floor you want to go to </p>
-            <p> Button to close and open door </p>
-            <p> Button to stop elevator </p>
-            <p> Button to call emergency services </p>
-            <p><strong> Other: </strong></p>
-            <p> Indicator of what floor the elevator is on from the outside and inside </p>
-            <p> </p>
-            <p> </p>
-            <p> The current interface is simple and enough for only two floors, but can still be improved upon. </p>
-            
-
-
-
-        <h1>New Interface idea coded in Processing</h1>
-        <script type="application/processing">
-
-
-
-
-
-            PFont font;
-            // Button coords
-            float b1X, b1Y, b2X, b2Y, b3X, b3Y,
-            b4X, b4Y, b5X, b5Y, b6X, b6Y;
-            float buttonSize;
-            color baseColor, strokeColor;
-            color highlightColor, bC1, bC2, bC3, bC4, bC5, bC6; 
-            boolean bOver1, bOver2, bOver3, bOver4, bOver5, bOver6 = false;
-            int s, timer;
-            
-          void setup() {
-            size(1000, 600, P2D);
-            
-            baseColor = color(255,255,255);
-            strokeColor = color(100,100,100);  
-            highlightColor = color(255, 0, 0);
-            bC1 = bC2 = bC3 = bC4 = bC5 = bC6 = strokeColor;
-            
-              b1X = (width*0.730);
-            b1Y = (height*0.425);
-              b2X = (width*0.730);
-            b2Y = (height*0.625);
-              b3X = (width*0.730);
-            b3Y = (height*0.825);
-            
-              b4X = (width*0.875);
-            b4Y = (height*0.425);
-              b5X = (width*0.875);
-            b5Y = (height*0.625);
-              b6X = (width*0.875);
-            b6Y = (height*0.825);
-            
-            buttonSize = 50;
-            
-            
-            //Creating a font 
-            font = createFont("Arial",20,true);
-            textFont(font,50);
-          }
-          
-          void draw() {
-            background(25);
-            s = second();
-            update(mouseX, mouseY);
-           
-            //Drawwing the hexagon button 
-            pushStyle();
-            pushMatrix();
-            stroke(bC1);
-            strokeWeight(8);
-            fill(baseColor);
-            polygon(b1X, b1Y, buttonSize, 6);  // Hexagon
-            popMatrix();
-            popStyle();
-            //Button Characters
-            fill(bC1);
-            text("1", b1X-15, b1Y+15);
-          
-          
-            ////Drawwing the hexagon button 
-            pushStyle();
-            pushMatrix();
-            stroke(bC2);
-            strokeWeight(8);
-            fill(baseColor);
-            polygon(b2X, b2Y, buttonSize, 6);  // Hexagon
-            popMatrix();
-            popStyle();
-            //Button Characters
-            fill(bC2);
-            text("2", b2X-15, b2Y+15);
-          
-             
-            //Drawwing the hexagon button 
-            pushStyle();
-            pushMatrix();
-            stroke(bC3);
-            strokeWeight(8);
-            fill(baseColor);
-            polygon(b3X, b3Y, buttonSize, 6);  // Hexagon
-            popMatrix();
-            popStyle();
-            //Button Characters
-            fill(bC3);
-            text("3", b3X-15, b3Y+15);
-          
-              
-            //Drawwing the hexagon button 
-            pushStyle();
-            pushMatrix();
-            stroke(bC4);
-            strokeWeight(8);
-            fill(baseColor);
-            polygon(b4X, b4Y, buttonSize, 6);  // Hexagon
-            popMatrix();
-            popStyle();
-            //Button Characters
-            fill(bC4);
-            text("4", b4X-15, b4Y+15);
-            
-              
-            //Drawwing the hexagon button 
-            pushStyle();
-            pushMatrix();
-            stroke(bC5);
-            strokeWeight(8);
-            fill(baseColor);
-            polygon(b5X, b5Y, buttonSize, 6);  // Hexagon
-            popMatrix();
-            popStyle();
-            //Button Characters
-            fill(bC5);
-            text("5", b5X-15, b5Y+15);
-          
-              
-            //Drawwing the hexagon button 
-            pushStyle();
-            pushMatrix();
-            stroke(bC6);
-            strokeWeight(8);
-            fill(baseColor);
-            polygon(b6X, b6Y, buttonSize, 6);  // Hexagon
-            popMatrix();
-            popStyle();
-            //Button Characters
-            fill(bC6);
-            text("6", b6X-15, b6Y+15);
-          
-          
-            
-            if (s == timer) {
-              bC1 = bC2 = bC3 = bC4 = bC5 = bC6 = color(100,100,100);
-            }
-            
-          }
-          
-          
-          
-          // Function to make any polygon you want
-          void polygon(float x, float y, float radius, int npoints) {
-            float angle = TWO_PI / npoints;
-            beginShape();
-            for (float a = 0; a < TWO_PI; a += angle) { 
-              float sx = x + cos(a) * radius;
-              float sy = y + sin(a) * radius;
-              vertex(sx, sy);
-            }
-            endShape(CLOSE);
-          }
-          
-          
-          void update(int x, int y) {
-            if ( overButton(b1X, b1Y, buttonSize) ) {
-              //bC1 = highlightColor;
-              bOver1 = true;
-            }
-            else if ( overButton(b2X, b2Y, buttonSize) ) {
-              //bC2 = highlightColor;
-              bOver2 = true;
-            }
-            else if ( overButton(b3X, b3Y, buttonSize) ) {
-             //strokeColor = colot(100, 100,100);
-              bOver3 = true;
-            }
-            else if ( overButton(b4X, b4Y, buttonSize) ) {
-             //strokeColor = colot(100, 100,100);
-              bOver4 = true;
-            }
-            else if ( overButton(b5X, b5Y, buttonSize) ) {
-             //strokeColor = colot(100, 100,100);
-              bOver5 = true;
-            }
-            else if ( overButton(b6X, b6Y, buttonSize) ) {
-             //strokeColor = colot(100, 100,100);
-              bOver6 = true;
-            }
-            else {
-              bOver1 = bOver2 = bOver3 = bOver4 = bOver5 = bOver6 = false;
-            }
-          }
-          
-          
-          void mousePressed() {
-            if (bOver1) {
-               bC1 = highlightColor;
-               timer = s + 2;
-               if (timer > 60){
-                 timer = 3;
-               }
-            }
-            else if (bOver2) {
-               bC2 = highlightColor;
-               timer = s + 2;
-               if (timer > 60){
-                 timer = 3;
-               }
-            }
-            else if (bOver3) {
-               bC3 = highlightColor;
-               timer = s + 2;
-               if (timer > 60){
-                 timer = 3;
-               }
-            }
-            else if (bOver4) {
-               bC4 = highlightColor;
-               timer = s + 2;
-               if (timer > 60){
-                 timer = 3;
-               }
-            }
-            else if (bOver5) {
-               bC5 = highlightColor;
-               timer = s + 2;
-               if (timer > 60){
-                 timer = 3;
-               }
-            }
-            else if (bOver6) {
-               bC6 = highlightColor;
-               timer = s + 2;
-               if (timer > 60){
-                 timer = 3;
-               }
-            }
-          }
-          
-          
-          boolean overButton(float x, float y, float diameter)  {
-            float disX = x - mouseX;
-            float disY = y - mouseY;
-            if (sqrt(sq(disX) + sq(disY)) < diameter/2 ) {
-              return true;
-            } else {
-              return false;
-            }
-          }
-
-
-		</script>
-		<canvas> </canvas>
-
-        <p> </p>
-        <p> </p>
-        <h1>Here is a picture of me with a kitten</h1>
-        <p><strong>See ya nerds</strong></p>
-        <img src="Low_Res_Kitten.png" alt="image is not available" style="width:217px;height:169px;">
-        <p>I learned HTML for this...</p>
-
-
-    </body>
-
+	<g>
+		<path d="M512,97.248c-19.04,8.352-39.328,13.888-60.48,16.576c21.76-12.992,38.368-33.408,46.176-58.016
+			c-20.288,12.096-42.688,20.64-66.56,25.408C411.872,60.704,384.416,48,354.464,48c-58.112,0-104.896,47.168-104.896,104.992
+			c0,8.32,0.704,16.32,2.432,23.936c-87.264-4.256-164.48-46.08-216.352-109.792c-9.056,15.712-14.368,33.696-14.368,53.056
+			c0,36.352,18.72,68.576,46.624,87.232c-16.864-0.32-33.408-5.216-47.424-12.928c0,0.32,0,0.736,0,1.152
+			c0,51.008,36.384,93.376,84.096,103.136c-8.544,2.336-17.856,3.456-27.52,3.456c-6.72,0-13.504-0.384-19.872-1.792
+			c13.6,41.568,52.192,72.128,98.08,73.12c-35.712,27.936-81.056,44.768-130.144,44.768c-8.608,0-16.864-0.384-25.12-1.44
+			C46.496,446.88,101.6,464,161.024,464c193.152,0,298.752-160,298.752-298.688c0-4.64-0.16-9.12-0.384-13.568
+			C480.224,136.96,497.728,118.496,512,97.248z"/>
+	</g>
+</svg>
+			
+			</a>
+		</div>
+		<div id="mobileMenuToggle" title="Menu">M</div>
+		<a href="/" id="mobileLogo">HTML5 Templates</a>
+		<div id="headerLeft">
+			<div id="menuToggle">&equiv;</div>
+		</div>
+		<div id="headerRight">
+			<nav>  
+				<ul>
+					<li><a href="/">Home</a>
+					<li><a rel="nofollow" href="https://htmlg.com/html-editor/">HTML Editor</a>
+					<li><a rel="nofollow" href="https://textfancy.com/">Text Fancy</a>
+					<li><a rel="nofollow" href="https://geekprank.com/">Geek Prank</a>
+					<li><a rel="nofollow" href="https://prettycoolsite.com/">Pretty Cool Site</a>
+					<li><a rel="nofollow" href="https://bestsiteever.com/">Best Site Ever</a>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</header>
+<div id="wrapall">
+	<div id="sidebar">
+		<div id="stickThis">
+			<div id="sidebarContent">
+				<a id="logo" href="https://html5-templates.com/">HTML5 Templates</a>
+				<aside>
+					<div>Sidebar 1</div>
+					<div>Sidebar 2</div>
+					<div>Sidebar 3</div>
+					<div>Sidebar 4</div>
+					<div>Sidebar 5</div>
+					<div>Sidebar 6</div>
+					<div>Sidebar 7</div>
+					<a class="back2Top" href="#">⮝&nbsp;Back to&nbsp;top&nbsp;⮝</a>
+				</aside>
+			</div>
+		</div>
+		<div id="stick-here"></div>
+	</div>
+	<div id="main">
+		<section id="page">
+			<main>
+				<article>
+					<h2>Simple Website Template with Sticky Sidebar</h2>
+					<p><strong>Free responsive website HTML theme with sticky sidebar for both desktop and mobile. With social media icons and toggle manu and sidebar on mobile.</strong></p>
+					<p><strong>You are welcome to copy, edit and use this template for free as long as you leave a visible link back to this website or you <a href="https://www.paypal.com/paypalme/ruwix" target="_blank">donate through PayPal</a>.</strong></p>
+				</article>
+				<article>
+					<h2>Illud mollis moderatius</h2>
+					<p>Eum facete intellegat ei, ut mazim melius usu. Has elit simul primis ne, regione minimum id cum. Sea deleniti dissentiet ea. Illud mollis moderatius ut per, at qui ubique populo. Eum ad cibo legimus, vim ei quidam fastidii.</p>
+				</article>
+				<article>
+					<h2>Ex ignota epicurei quo</h2>
+					<p>Quo debet vivendo ex. Qui ut admodum senserit partiendo. Id adipiscing disputando eam, sea id magna pertinax concludaturque. Ex ignota epicurei quo, his ex doctus delenit fabellas, erat timeam cotidieque sit in. Vel eu soleat voluptatibus, cum cu exerci mediocritatem. Malis legere at per, has brute putant animal et, in consul utamur usu.</p>
+				</article>
+				<article>
+					<h2>His at autem inani volutpat</h2>
+					<p>Te has amet modo perfecto, te eum mucius conclusionemque, mel te erat deterruisset. Duo ceteros phaedrum id, ornatus postulant in sea. His at autem inani volutpat. Tollit possit in pri, platonem persecuti ad vix, vel nisl albucius gloriatur no.</p>
+				</article>
+				<article>
+					<h2>Stet facilis ius te</h2>
+					<p>Lorem ipsum dolor sit amet, nonumes voluptatum mel ea, cu case ceteros cum. Novum commodo malorum vix ut. Dolores consequuntur in ius, sale electram dissentiunt quo te. Cu duo omnes invidunt, eos eu mucius fabellas. Stet facilis ius te, quando voluptatibus eos in. Ad vix mundi alterum, integre urbanitas intellegam vix in.</p>
+				</article>
+				<article>
+					<h2>Illud mollis moderatius</h2>
+					<p>Eum facete intellegat ei, ut mazim melius usu. Has elit simul primis ne, regione minimum id cum. Sea deleniti dissentiet ea. Illud mollis moderatius ut per, at qui ubique populo. Eum ad cibo legimus, vim ei quidam fastidii.</p>
+				</article>
+				<article>
+					<h2>Illud mollis moderatius</h2>
+					<p>Eum facete intellegat ei, ut mazim melius usu. Has elit simul primis ne, regione minimum id cum. Sea deleniti dissentiet ea. Illud mollis moderatius ut per, at qui ubique populo. Eum ad cibo legimus, vim ei quidam fastidii.</p>
+				</article>
+				<article>
+					<h2>Ex ignota epicurei quo</h2>
+					<p>Quo debet vivendo ex. Qui ut admodum senserit partiendo. Id adipiscing disputando eam, sea id magna pertinax concludaturque. Ex ignota epicurei quo, his ex doctus delenit fabellas, erat timeam cotidieque sit in. Vel eu soleat voluptatibus, cum cu exerci mediocritatem. Malis legere at per, has brute putant animal et, in consul utamur usu.</p>
+				</article>
+				<article>
+					<h2>Illud mollis moderatius</h2>
+					<p>Eum facete intellegat ei, ut mazim melius usu. Has elit simul primis ne, regione minimum id cum. Sea deleniti dissentiet ea. Illud mollis moderatius ut per, at qui ubique populo. Eum ad cibo legimus, vim ei quidam fastidii.</p>
+				</article>
+				<article>
+					<h2>His at autem inani volutpat</h2>
+					<p>Te has amet modo perfecto, te eum mucius conclusionemque, mel te erat deterruisset. Duo ceteros phaedrum id, ornatus postulant in sea. His at autem inani volutpat. Tollit possit in pri, platonem persecuti ad vix, vel nisl albucius gloriatur no.</p>
+				</article>
+				<article>
+					<h2>Stet facilis ius te</h2>
+					<p>Lorem ipsum dolor sit amet, nonumes voluptatum mel ea, cu case ceteros cum. Novum commodo malorum vix ut. Dolores consequuntur in ius, sale electram dissentiunt quo te. Cu duo omnes invidunt, eos eu mucius fabellas. Stet facilis ius te, quando voluptatibus eos in. Ad vix mundi alterum, integre urbanitas intellegam vix in.</p>
+				</article>
+				<article>
+					<h2>Illud mollis moderatius</h2>
+					<p>Eum facete intellegat ei, ut mazim melius usu. Has elit simul primis ne, regione minimum id cum. Sea deleniti dissentiet ea. Illud mollis moderatius ut per, at qui ubique populo. Eum ad cibo legimus, vim ei quidam fastidii.</p>
+				</article>
+				<article>
+					<h2>Ex ignota epicurei quo</h2>
+					<p>Quo debet vivendo ex. Qui ut admodum senserit partiendo. Id adipiscing disputando eam, sea id magna pertinax concludaturque. Ex ignota epicurei quo, his ex doctus delenit fabellas, erat timeam cotidieque sit in. Vel eu soleat voluptatibus, cum cu exerci mediocritatem. Malis legere at per, has brute putant animal et, in consul utamur usu.</p>
+				</article>
+				<article>
+					<h2>His at autem inani volutpat</h2>
+					<p>Te has amet modo perfecto, te eum mucius conclusionemque, mel te erat deterruisset. Duo ceteros phaedrum id, ornatus postulant in sea. His at autem inani volutpat. Tollit possit in pri, platonem persecuti ad vix, vel nisl albucius gloriatur no.</p>
+				</article>
+				<article>
+					<h2>Stet facilis ius te</h2>
+					<p>Lorem ipsum dolor sit amet, nonumes voluptatum mel ea, cu case ceteros cum. Novum commodo malorum vix ut. Dolores consequuntur in ius, sale electram dissentiunt quo te. Cu duo omnes invidunt, eos eu mucius fabellas. Stet facilis ius te, quando voluptatibus eos in. Ad vix mundi alterum, integre urbanitas intellegam vix in.</p>
+				</article>
+				<article>
+					<h2>Illud mollis moderatius</h2>
+					<p>Eum facete intellegat ei, ut mazim melius usu. Has elit simul primis ne, regione minimum id cum. Sea deleniti dissentiet ea. Illud mollis moderatius ut per, at qui ubique populo. Eum ad cibo legimus, vim ei quidam fastidii.</p>
+				</article>
+				<article>
+					<h2>Ex ignota epicurei quo</h2>
+					<p>Quo debet vivendo ex. Qui ut admodum senserit partiendo. Id adipiscing disputando eam, sea id magna pertinax concludaturque. Ex ignota epicurei quo, his ex doctus delenit fabellas, erat timeam cotidieque sit in. Vel eu soleat voluptatibus, cum cu exerci mediocritatem. Malis legere at per, has brute putant animal et, in consul utamur usu.</p>
+				</article>
+				<article>
+					<h2>His at autem inani volutpat</h2>
+					<p>Te has amet modo perfecto, te eum mucius conclusionemque, mel te erat deterruisset. Duo ceteros phaedrum id, ornatus postulant in sea. His at autem inani volutpat. Tollit possit in pri, platonem persecuti ad vix, vel nisl albucius gloriatur no.</p>
+				</article>
+			</main>			
+			<footer>
+				<p>&copy; You can copy, edit and publish this template but please leave a visible link to&nbsp;our&nbsp;website. <a rel="nofollow" href="https://html5-templates.com/" target="_blank" rel="nofollow">HTML5&nbsp;Templates</a></p>
+			</footer>
+		</section>
+	</div>
+</div>
+</body>
 </html>
