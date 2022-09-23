@@ -6,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://html5-templates.com/" />
     <title>CEmfinger Pages</title>
+	
     <meta name="description" content="Free responsive website HTML theme with sticky sidebar for both desktop and mobile. ">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+	<!-- Load the Processing.js library -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.0/processing.min.js"></script>
 </head>
 <body>
 <header>
@@ -62,9 +65,9 @@
 				<a id="logo" href="https://html5-templates.com/">HTML5 Templates</a>
 				<aside>
 					<div>Outside picture of elevator <img src="Outside_Elevator.jpg" alt="image is not available" style="width:238px;height:317px;"> </div>
-					<div>Sidebar 2</div>
-					<div>Sidebar 3</div>
-					<div>Sidebar 4</div>
+					<div>Picture of Elevator Interface <img src="Elevator_Interface.jpg" alt="image is not available" style="width:238px;height:317px;"> </div>
+					<div>Visual of Elevator in Operation <img src="Operation.gif" alt="image is not available" style="width:238px;height:317px;"> </div>
+					<div>Picture of me with a kitten <img src="Low_Res_Kitten.png" alt="image is not available" style="width:217px;height:169px;"> <p>I learned HTML for this...</p> </div>
 					<div>Sidebar 5</div>
 					<div>Sidebar 6</div>
 					<div>Sidebar 7</div>
@@ -78,25 +81,278 @@
 		<section id="page">
 			<main>
 				<article>
-					<h2>Simple Website Template with Sticky Sidebar</h2>
-					<p><strong>Free responsive website HTML theme with sticky sidebar for both desktop and mobile. With social media icons and toggle manu and sidebar on mobile.</strong></p>
-					<p><strong>You are welcome to copy, edit and use this template for free as long as you leave a visible link back to this website or you <a href="https://www.paypal.com/paypalme/ruwix" target="_blank">donate through PayPal</a>.</strong></p>
+					<h2>Project 1: Elevator Interface</h2>
+					<p><strong>This website was made to cover key points and requirements invloved in CS 3366 Elevator & Door Design</strong></p>
+					<p><strong>Cameron T Emfinger</strong></p>
+					<p><strong>TTU Fall 2022</strong></p>
 				</article>
 				<article>
-					<h2>Illud mollis moderatius</h2>
-					<p>Eum facete intellegat ei, ut mazim melius usu. Has elit simul primis ne, regione minimum id cum. Sea deleniti dissentiet ea. Illud mollis moderatius ut per, at qui ubique populo. Eum ad cibo legimus, vim ei quidam fastidii.</p>
+					<h2>Issues with interfaces.</h2>
+					<p>No braille for the visually impaired on the outside interface.</p>
+					<p>No indication of tje current floor from the inside of the elevator.</p>
+					<p>The "Alarm" and "Stop" buttons are both too close to other buttons and could be pressed accidentally.</p>
+					<p>No braille for the "Open Door", "Alarm", and "Stop" button.</p>
 				</article>
 				<article>
-					<h2>Ex ignota epicurei quo</h2>
-					<p>Quo debet vivendo ex. Qui ut admodum senserit partiendo. Id adipiscing disputando eam, sea id magna pertinax concludaturque. Ex ignota epicurei quo, his ex doctus delenit fabellas, erat timeam cotidieque sit in. Vel eu soleat voluptatibus, cum cu exerci mediocritatem. Malis legere at per, has brute putant animal et, in consul utamur usu.</p>
+					<h2>Some common things used on an elevators</h2>
+					<p>A button on the outside of the elevator to indicate if you want to call the elevator to go up or down.</p>
+					<p>A button to close and open the doors.</p>
+					<p>Buttons to declare what floor you want to go to.</p>
+					<p>A button to stop the elevator.</p>
+					<p>An button to call for help incase of emergencies.</p>
+					<p>A vidual indicator of what floor the elevator is currently on from both the outside and inside</p>
 				</article>
 				<article>
-					<h2>His at autem inani volutpat</h2>
+					<h2>The current interface is simple and enough for only two floors, but can still be improved upon</h2>
 					<p>Te has amet modo perfecto, te eum mucius conclusionemque, mel te erat deterruisset. Duo ceteros phaedrum id, ornatus postulant in sea. His at autem inani volutpat. Tollit possit in pri, platonem persecuti ad vix, vel nisl albucius gloriatur no.</p>
 				</article>
 				<article>
-					<h2>Stet facilis ius te</h2>
-					<p>Lorem ipsum dolor sit amet, nonumes voluptatum mel ea, cu case ceteros cum. Novum commodo malorum vix ut. Dolores consequuntur in ius, sale electram dissentiunt quo te. Cu duo omnes invidunt, eos eu mucius fabellas. Stet facilis ius te, quando voluptatibus eos in. Ad vix mundi alterum, integre urbanitas intellegam vix in.</p>
+					<h2>Interface Re-Design</h2>
+					<p>New interface idea coded in Processing:</p>
+					<script type="application/processing">
+
+
+						PFont font;
+						// Button coords
+						float b1X, b1Y, b2X, b2Y, b3X, b3Y,
+						b4X, b4Y, b5X, b5Y, b6X, b6Y;
+						float buttonSize;
+						color baseColor, strokeColor;
+						color highlightColor, bC1, bC2, bC3, bC4, bC5, bC6; 
+						boolean bOver1, bOver2, bOver3, bOver4, bOver5, bOver6 = false;
+						int s, timer;
+						
+					  void setup() {
+						size(1000, 600, P2D);
+						
+						baseColor = color(255,255,255);
+						strokeColor = color(100,100,100);  
+						highlightColor = color(255, 0, 0);
+						bC1 = bC2 = bC3 = bC4 = bC5 = bC6 = strokeColor;
+						
+						  b1X = (width*0.730);
+						b1Y = (height*0.425);
+						  b2X = (width*0.730);
+						b2Y = (height*0.625);
+						  b3X = (width*0.730);
+						b3Y = (height*0.825);
+						
+						  b4X = (width*0.875);
+						b4Y = (height*0.425);
+						  b5X = (width*0.875);
+						b5Y = (height*0.625);
+						  b6X = (width*0.875);
+						b6Y = (height*0.825);
+						
+						buttonSize = 50;
+						
+						
+						//Creating a font 
+						font = createFont("Arial",20,true);
+						textFont(font,50);
+					  }
+					  
+					  void draw() {
+						background(25);
+						s = second();
+						update(mouseX, mouseY);
+					   
+						//Drawwing the hexagon button 
+						pushStyle();
+						pushMatrix();
+						stroke(bC1);
+						strokeWeight(8);
+						fill(baseColor);
+						polygon(b1X, b1Y, buttonSize, 6);  // Hexagon
+						popMatrix();
+						popStyle();
+						//Button Characters
+						fill(bC1);
+						text("1", b1X-15, b1Y+15);
+					  
+					  
+						////Drawwing the hexagon button 
+						pushStyle();
+						pushMatrix();
+						stroke(bC2);
+						strokeWeight(8);
+						fill(baseColor);
+						polygon(b2X, b2Y, buttonSize, 6);  // Hexagon
+						popMatrix();
+						popStyle();
+						//Button Characters
+						fill(bC2);
+						text("2", b2X-15, b2Y+15);
+					  
+						 
+						//Drawwing the hexagon button 
+						pushStyle();
+						pushMatrix();
+						stroke(bC3);
+						strokeWeight(8);
+						fill(baseColor);
+						polygon(b3X, b3Y, buttonSize, 6);  // Hexagon
+						popMatrix();
+						popStyle();
+						//Button Characters
+						fill(bC3);
+						text("3", b3X-15, b3Y+15);
+					  
+						  
+						//Drawwing the hexagon button 
+						pushStyle();
+						pushMatrix();
+						stroke(bC4);
+						strokeWeight(8);
+						fill(baseColor);
+						polygon(b4X, b4Y, buttonSize, 6);  // Hexagon
+						popMatrix();
+						popStyle();
+						//Button Characters
+						fill(bC4);
+						text("4", b4X-15, b4Y+15);
+						
+						  
+						//Drawwing the hexagon button 
+						pushStyle();
+						pushMatrix();
+						stroke(bC5);
+						strokeWeight(8);
+						fill(baseColor);
+						polygon(b5X, b5Y, buttonSize, 6);  // Hexagon
+						popMatrix();
+						popStyle();
+						//Button Characters
+						fill(bC5);
+						text("5", b5X-15, b5Y+15);
+					  
+						  
+						//Drawwing the hexagon button 
+						pushStyle();
+						pushMatrix();
+						stroke(bC6);
+						strokeWeight(8);
+						fill(baseColor);
+						polygon(b6X, b6Y, buttonSize, 6);  // Hexagon
+						popMatrix();
+						popStyle();
+						//Button Characters
+						fill(bC6);
+						text("6", b6X-15, b6Y+15);
+					  
+					  
+						
+						if (s == timer) {
+						  bC1 = bC2 = bC3 = bC4 = bC5 = bC6 = color(100,100,100);
+						}
+						
+					  }
+					  
+					  
+					  
+					  // Function to make any polygon you want
+					  void polygon(float x, float y, float radius, int npoints) {
+						float angle = TWO_PI / npoints;
+						beginShape();
+						for (float a = 0; a < TWO_PI; a += angle) { 
+						  float sx = x + cos(a) * radius;
+						  float sy = y + sin(a) * radius;
+						  vertex(sx, sy);
+						}
+						endShape(CLOSE);
+					  }
+					  
+					  
+					  void update(int x, int y) {
+						if ( overButton(b1X, b1Y, buttonSize) ) {
+						  //bC1 = highlightColor;
+						  bOver1 = true;
+						}
+						else if ( overButton(b2X, b2Y, buttonSize) ) {
+						  //bC2 = highlightColor;
+						  bOver2 = true;
+						}
+						else if ( overButton(b3X, b3Y, buttonSize) ) {
+						 //strokeColor = colot(100, 100,100);
+						  bOver3 = true;
+						}
+						else if ( overButton(b4X, b4Y, buttonSize) ) {
+						 //strokeColor = colot(100, 100,100);
+						  bOver4 = true;
+						}
+						else if ( overButton(b5X, b5Y, buttonSize) ) {
+						 //strokeColor = colot(100, 100,100);
+						  bOver5 = true;
+						}
+						else if ( overButton(b6X, b6Y, buttonSize) ) {
+						 //strokeColor = colot(100, 100,100);
+						  bOver6 = true;
+						}
+						else {
+						  bOver1 = bOver2 = bOver3 = bOver4 = bOver5 = bOver6 = false;
+						}
+					  }
+					  
+					  
+					  void mousePressed() {
+						if (bOver1) {
+						   bC1 = highlightColor;
+						   timer = s + 2;
+						   if (timer > 60){
+							 timer = 3;
+						   }
+						}
+						else if (bOver2) {
+						   bC2 = highlightColor;
+						   timer = s + 2;
+						   if (timer > 60){
+							 timer = 3;
+						   }
+						}
+						else if (bOver3) {
+						   bC3 = highlightColor;
+						   timer = s + 2;
+						   if (timer > 60){
+							 timer = 3;
+						   }
+						}
+						else if (bOver4) {
+						   bC4 = highlightColor;
+						   timer = s + 2;
+						   if (timer > 60){
+							 timer = 3;
+						   }
+						}
+						else if (bOver5) {
+						   bC5 = highlightColor;
+						   timer = s + 2;
+						   if (timer > 60){
+							 timer = 3;
+						   }
+						}
+						else if (bOver6) {
+						   bC6 = highlightColor;
+						   timer = s + 2;
+						   if (timer > 60){
+							 timer = 3;
+						   }
+						}
+					  }
+					  
+					  
+					  boolean overButton(float x, float y, float diameter)  {
+						float disX = x - mouseX;
+						float disY = y - mouseY;
+						if (sqrt(sq(disX) + sq(disY)) < diameter/2 ) {
+						  return true;
+						} else {
+						  return false;
+						}
+					  }
+			
+			
+					</script>
+			
 				</article>
 				<article>
 					<h2>Illud mollis moderatius</h2>
