@@ -17,24 +17,24 @@ table{border-collapse:collapse;border-spacing:0}
 hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}
 input,select{vertical-align:middle}
 body,html{background-color:#FFF}
-header{background:#6f9898;padding:10px 30px;margin:auto;position:fixed;left:0;right:0;top:0;z-index:999;height:40px}
+header{background:#986f6f;padding:10px 30px;margin:auto;position:fixed;left:0;right:0;top:0;z-index:999;height:40px}
 nav{display:inline-block}
-nav ul li a{background:#fff;padding:2px 6px;font-size:14px;text-decoration:none;font-weight:bold;color:#344;border-radius:5px}
+nav ul li a{background:#fff;padding:2px 6px;font-size:14px;text-decoration:none;font-weight:bold;color:rgb(68, 51, 51);border-radius:5px}
 nav ul li a:hover{color:#000}
 nav ul li{display:inline-block;margin:10px}
 nav ul{list-style:none}
 article{border-bottom:2px dotted #998;padding-bottom:20px;margin-bottom:20px}
 article h2{font-weight:normal;margin-bottom:12px}
-footer{background:#344;max-width:1000px;margin:0 -20px;clear:both;text-align:right}
+footer{background:rgb(68, 51, 51);max-width:1000px;margin:0 -20px;clear:both;text-align:right}
 footer p{padding:20px;color:#FFF}
 address{padding:10px 20px 30px 10px}
-aside > div{margin:10px auto;background:#344;min-height:150px;padding:30px 10px;text-align:center;color:#FFF}
+aside > div{margin:10px auto;background:rgb(68, 51, 51);min-height:150px;padding:30px 10px;text-align:center;color:#FFF}
 a#logo{vertical-align:middle;font-size:40px;color:#344;font-weight:bold;display:block;text-decoration:none;text-align:center;line-height:40px;padding:60px 5px}
 body > section{max-width:1000px;margin:auto;padding:30px 0px;border-bottom:1px solid #999;color:#333}
-#sidebarBackTop{background:#286983;color:#FFF;opacity:0.8;cursor:pointer;display:block;padding:5px}
-#sidebar a.back2Top{text-decoration:none;text-align:center;background:#344;color:#FFF;font-weight:bold;padding:5px;display:block}
-#sidebar a.back2Top:hover{background:#456}
-#sidebarContent{width:300px;background:#9dc1c1;padding:10px}
+#sidebarBackTop{background:#832828;color:#FFF;opacity:0.8;cursor:pointer;display:block;padding:5px}
+#sidebar a.back2Top{text-decoration:none;text-align:center;background:rgb(68, 51, 51);color:#FFF;font-weight:bold;padding:5px;display:block}
+#sidebar a.back2Top:hover{background:rgb(102, 68, 68)}
+#sidebarContent{width:300px;background:#c19d9d;padding:10px}
 footer a{color:#FFF}
 #main{margin-left:320px}
 #wrapall{padding-top:60px}
@@ -79,7 +79,7 @@ nav ul li{display:block;margin:0}
 header{padding:3px 10px}
 #page{padding: 20px 10px}
 #wrapall{padding-top:46px}
-#sidebarContent{right:0;background:#6f9898}
+#sidebarContent{right:0;background:#986f6f}
 #mobileLogo{display:inline-block;font-size:17px;padding:0 3px 0 10px;font-weight:bold;color:#FFF;text-decoration:none}
 #mobileMenuToggle{display:inline-block}
 }
