@@ -80,25 +80,51 @@
 					<p><strong>TTU Fall 2022</strong></p>
 				</article>
 				<article>
-					<h2>Issues with interfaces.</h2>
-					<p>No braille for the visually impaired on the outside interface.</p>
-					<p>No indication of tje current floor from the inside of the elevator.</p>
+					<h2>Issues with current interfaces</h2>
+					<p>No indication of the current floor from the outside or inside of the elevator.</p>
 					<p>The "Alarm" and "Stop" buttons are both too close to other buttons and could be pressed accidentally.</p>
-					<p>No braille for the "Open Door", "Alarm", and "Stop" button.</p>
+					<p>No braille on the outside interface for the visually impaired.</p>
+					<p>Pressing a floor that you are already on will not open the door.</p>
+					
+					<h2>Whats good or bad here?</h2>
+					<p><strong>Good:</strong></p>
+					<p style="padding-left: 20px;">Simple Interface</p>
+					<p style="padding-left: 20px;">Nice Tactile and Visual feedback for buttons</p>
+					<p style="padding-left: 20px;">Open door button actually works</p>
+					<p><strong>Bad:</strong></p>
+					<p style="padding-left: 20px;">"Feels" Old</p>
+					<p style="padding-left: 20px;">Could accidentally push the Emergency buttons</p>
+					<p style="padding-left: 20px;">No Indication of what floor the elevator is on from the interfaces</p>
+					<p style="padding-left: 20px;">No braille on the outside interface</p>
 				</article>
 				<article>
-					<h2>Some common things used on elevators</h2>
+					<h2>Some commonly used things:</h2>
 					<p>A button on the outside of the elevator to indicate if you want to call the elevator to go up or down.</p>
 					<p>A button to close and open the doors.</p>
 					<p>Buttons to declare what floor you want to go to.</p>
-					<p>A button to stop the elevator.</p>
-					<p>An button to call for help incase of emergencies.</p>
-					<p>A vidual indicator of what floor the elevator is currently on from both the outside and inside.</p>
 					<p>A railing to hold onto in the elavator.</p>
+					<p>A visual indicator of what floor the elevator is currently on from both the outside and inside.</p>
+					
+					<h2>Some more rarely used things:</h2>
+					<p>A button to stop the elevator.</p>
+					<p>A button to sound an alarm for help incase of emergencies.</p>
+					<p>A button or phone to speak with a 24-hour monitoring service</p>
+
+					<h2>A common sequence of actions</h2>
+					<ol>
+						<li>User presses button to call elevator</li>
+						<li>User waits for elevator</li>
+						<li>Elevator door opens</li>
+						<li>User walks into elevator</li>
+						<li>User presses button to declare what floor they want to go to</li>
+						<li>User waits for elevator</li>
+						<li>Elevator door opens</li>
+						<li>User arrives to desired floor</li>
+					</ol>
+					
 				</article>
 				<article>
-					<h2>The current interface is simple and enough for only two floors, but can still be improved upon</h2>
-					<p>Te has amet modo perfecto, te eum mucius conclusionemque, mel te erat deterruisset. Duo ceteros phaedrum id, ornatus postulant in sea. His at autem inani volutpat. Tollit possit in pri, platonem persecuti ad vix, vel nisl albucius gloriatur no.</p>
+					
 				</article>
 				<article>
 					<h2>Interface Re-Design</h2>
@@ -347,250 +373,6 @@
 			
 			
 					</script>
-					<script type="application/processing">
-
-
-						PFont font;
-						// Button coords
-						float b1X, b1Y, b2X, b2Y, b3X, b3Y,
-						b4X, b4Y, b5X, b5Y, b6X, b6Y;
-						float buttonSize;
-						color baseColor, strokeColor;
-						color highlightColor, bC1, bC2, bC3, bC4, bC5, bC6; 
-						boolean bOver1, bOver2, bOver3, bOver4, bOver5, bOver6 = false;
-						int s, timer;
-						
-					  void setup() {
-						size(400, 600, P2D);
-						
-						baseColor = color(255,255,255);
-						strokeColor = color(100,100,100);  
-						highlightColor = color(255, 0, 0);
-						bC1 = bC2 = bC3 = bC4 = bC5 = bC6 = strokeColor;
-						
-						  b1X = (width*0.730);
-						b1Y = (height*0.425);
-						  b2X = (width*0.730);
-						b2Y = (height*0.625);
-						  b3X = (width*0.730);
-						b3Y = (height*0.825);
-						
-						  b4X = (width*0.875);
-						b4Y = (height*0.425);
-						  b5X = (width*0.875);
-						b5Y = (height*0.625);
-						  b6X = (width*0.875);
-						b6Y = (height*0.825);
-						
-						buttonSize = 50;
-						
-						
-						//Creating a font 
-						font = createFont("Arial",20,true);
-						textFont(font,50);
-					  }
-					  
-					  void draw() {
-						background(25);
-						s = second();
-						update(mouseX, mouseY);
-					   
-						//Drawwing the hexagon button 
-						pushStyle();
-						pushMatrix();
-						stroke(bC1);
-						strokeWeight(8);
-						fill(baseColor);
-						polygon(b1X, b1Y, buttonSize, 6);  // Hexagon
-						popMatrix();
-						popStyle();
-						//Button Characters
-						fill(bC1);
-						text("1", b1X-15, b1Y+15);
-					  
-					  
-						////Drawwing the hexagon button 
-						pushStyle();
-						pushMatrix();
-						stroke(bC2);
-						strokeWeight(8);
-						fill(baseColor);
-						polygon(b2X, b2Y, buttonSize, 6);  // Hexagon
-						popMatrix();
-						popStyle();
-						//Button Characters
-						fill(bC2);
-						text("2", b2X-15, b2Y+15);
-					  
-						 
-						//Drawwing the hexagon button 
-						pushStyle();
-						pushMatrix();
-						stroke(bC3);
-						strokeWeight(8);
-						fill(baseColor);
-						polygon(b3X, b3Y, buttonSize, 6);  // Hexagon
-						popMatrix();
-						popStyle();
-						//Button Characters
-						fill(bC3);
-						text("3", b3X-15, b3Y+15);
-					  
-						  
-						//Drawwing the hexagon button 
-						pushStyle();
-						pushMatrix();
-						stroke(bC4);
-						strokeWeight(8);
-						fill(baseColor);
-						polygon(b4X, b4Y, buttonSize, 6);  // Hexagon
-						popMatrix();
-						popStyle();
-						//Button Characters
-						fill(bC4);
-						text("4", b4X-15, b4Y+15);
-						
-						  
-						//Drawwing the hexagon button 
-						pushStyle();
-						pushMatrix();
-						stroke(bC5);
-						strokeWeight(8);
-						fill(baseColor);
-						polygon(b5X, b5Y, buttonSize, 6);  // Hexagon
-						popMatrix();
-						popStyle();
-						//Button Characters
-						fill(bC5);
-						text("5", b5X-15, b5Y+15);
-					  
-						  
-						//Drawwing the hexagon button 
-						pushStyle();
-						pushMatrix();
-						stroke(bC6);
-						strokeWeight(8);
-						fill(baseColor);
-						polygon(b6X, b6Y, buttonSize, 6);  // Hexagon
-						popMatrix();
-						popStyle();
-						//Button Characters
-						fill(bC6);
-						text("6", b6X-15, b6Y+15);
-					  
-					  
-						
-						if (s == timer) {
-						  bC1 = bC2 = bC3 = bC4 = bC5 = bC6 = color(100,100,100);
-						}
-						
-					  }
-					  
-					  
-					  
-					  // Function to make any polygon you want
-					  void polygon(float x, float y, float radius, int npoints) {
-						float angle = TWO_PI / npoints;
-						beginShape();
-						for (float a = 0; a < TWO_PI; a += angle) { 
-						  float sx = x + cos(a) * radius;
-						  float sy = y + sin(a) * radius;
-						  vertex(sx, sy);
-						}
-						endShape(CLOSE);
-					  }
-					  
-					  
-					  void update(int x, int y) {
-						if ( overButton(b1X, b1Y, buttonSize) ) {
-						  //bC1 = highlightColor;
-						  bOver1 = true;
-						}
-						else if ( overButton(b2X, b2Y, buttonSize) ) {
-						  //bC2 = highlightColor;
-						  bOver2 = true;
-						}
-						else if ( overButton(b3X, b3Y, buttonSize) ) {
-						 //strokeColor = colot(100, 100,100);
-						  bOver3 = true;
-						}
-						else if ( overButton(b4X, b4Y, buttonSize) ) {
-						 //strokeColor = colot(100, 100,100);
-						  bOver4 = true;
-						}
-						else if ( overButton(b5X, b5Y, buttonSize) ) {
-						 //strokeColor = colot(100, 100,100);
-						  bOver5 = true;
-						}
-						else if ( overButton(b6X, b6Y, buttonSize) ) {
-						 //strokeColor = colot(100, 100,100);
-						  bOver6 = true;
-						}
-						else {
-						  bOver1 = bOver2 = bOver3 = bOver4 = bOver5 = bOver6 = false;
-						}
-					  }
-					  
-					  
-					  void mousePressed() {
-						if (bOver1) {
-						   bC1 = highlightColor;
-						   timer = s + 2;
-						   if (timer > 60){
-							 timer = 3;
-						   }
-						}
-						else if (bOver2) {
-						   bC2 = highlightColor;
-						   timer = s + 2;
-						   if (timer > 60){
-							 timer = 3;
-						   }
-						}
-						else if (bOver3) {
-						   bC3 = highlightColor;
-						   timer = s + 2;
-						   if (timer > 60){
-							 timer = 3;
-						   }
-						}
-						else if (bOver4) {
-						   bC4 = highlightColor;
-						   timer = s + 2;
-						   if (timer > 60){
-							 timer = 3;
-						   }
-						}
-						else if (bOver5) {
-						   bC5 = highlightColor;
-						   timer = s + 2;
-						   if (timer > 60){
-							 timer = 3;
-						   }
-						}
-						else if (bOver6) {
-						   bC6 = highlightColor;
-						   timer = s + 2;
-						   if (timer > 60){
-							 timer = 3;
-						   }
-						}
-					  }
-					  
-					  
-					  boolean overButton(float x, float y, float diameter)  {
-						float disX = x - mouseX;
-						float disY = y - mouseY;
-						if (sqrt(sq(disX) + sq(disY)) < diameter/2 ) {
-						  return true;
-						} else {
-						  return false;
-						}
-					  }
-			
-			
-					</script>
-					<canvas> </canvas>
 					<canvas> </canvas>
 			
 				</article>
