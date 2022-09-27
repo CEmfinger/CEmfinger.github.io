@@ -144,6 +144,9 @@
 					<script type="application/processing">
 
 
+
+
+
 						PFont font;
 						// Button coords
 						float b1X, b1Y, b2X, b2Y, b3X, b3Y,
@@ -152,55 +155,85 @@
 						color baseColor, strokeColor;
 						color highlightColor, bC1, bC2, bC3, bC4, bC5, bC6; 
 						boolean bOver1, bOver2, bOver3, bOver4, bOver5, bOver6 = false;
-						int s, timer;
+						boolean bFloor1, bFloor2, bFloor3 = false;
+						int s, timer, currentFloor;
+						
 						
 					  void setup() {
-						size(1000, 600, P2D);
+						size(360, 720, P2D);
 						
 						baseColor = color(255,255,255);
 						strokeColor = color(100,100,100);  
 						highlightColor = color(255, 0, 0);
 						bC1 = bC2 = bC3 = bC4 = bC5 = bC6 = strokeColor;
 						
-						  b1X = (width*0.730);
-						b1Y = (height*0.425);
-						  b2X = (width*0.730);
-						b2Y = (height*0.625);
-						  b3X = (width*0.730);
-						b3Y = (height*0.825);
+						  b1X = (width*0.080);
+						b1Y = (height*0.175);
 						
-						  b4X = (width*0.875);
-						b4Y = (height*0.425);
-						  b5X = (width*0.875);
-						b5Y = (height*0.625);
-						  b6X = (width*0.875);
-						b6Y = (height*0.825);
+						  b2X = (width*0.220);
+						b2Y = (height*0.550);
+						  b3X = (width*0.500);
+						b3Y = (height*0.550);
+						  b4X = (width*0.780);
+						b4Y = (height*0.550);
 						
-						buttonSize = 50;
+						  b5X = (width*0.080);
+						b5Y = (height*0.680);
+						  b6X = (width*0.080);
+						b6Y = (height*0.840);
+						
+						buttonSize = 35;
+						currentFloor = 1;
 						
 						
 						//Creating a font 
 						font = createFont("Arial",20,true);
 						textFont(font,50);
+						
+					  
 					  }
 					  
 					  void draw() {
 						background(25);
 						s = second();
 						update(mouseX, mouseY);
-					   
+						
+						pushStyle();
+						textFont(font,35);
+						fill(baseColor);
+						text("Current Floor:", width*0.100, height*0.100);
+						popStyle();
+						
+						pushStyle();
+						fill(baseColor);
+						textFont(font, 40);
+						text(currentFloor, width*0.750, height*0.103);
+						popStyle();
+						
+						
+						
+						stroke(strokeColor);
+						strokeWeight(8);
+						fill(baseColor);
+						rect(width*0.080, height*0.350, 300, 200, 20);
+						fill(strokeColor);
+						text("Destination:", width*0.120, height*0.450);
+					  
+						
+						
 						//Drawwing the hexagon button 
 						pushStyle();
 						pushMatrix();
 						stroke(bC1);
 						strokeWeight(8);
 						fill(baseColor);
-						polygon(b1X, b1Y, buttonSize, 6);  // Hexagon
+						rect(b1X, b1Y, 300, 75, 20);
+						//polygon(b1X, b1Y, buttonSize, 100);  // Hexagon
 						popMatrix();
-						popStyle();
+					  
 						//Button Characters
 						fill(bC1);
-						text("1", b1X-15, b1Y+15);
+						text("Open Door", b1X+20, b1Y+55);
 					  
 					  
 						////Drawwing the hexagon button 
@@ -209,12 +242,12 @@
 						stroke(bC2);
 						strokeWeight(8);
 						fill(baseColor);
-						polygon(b2X, b2Y, buttonSize, 6);  // Hexagon
+						polygon(b2X, b2Y, buttonSize, 200);  // Hexagon
 						popMatrix();
 						popStyle();
 						//Button Characters
 						fill(bC2);
-						text("2", b2X-15, b2Y+15);
+						text("1", b2X-15, b2Y+15);
 					  
 						 
 						//Drawwing the hexagon button 
@@ -223,12 +256,12 @@
 						stroke(bC3);
 						strokeWeight(8);
 						fill(baseColor);
-						polygon(b3X, b3Y, buttonSize, 6);  // Hexagon
+						polygon(b3X, b3Y, buttonSize, 200);  // Hexagon
 						popMatrix();
 						popStyle();
 						//Button Characters
 						fill(bC3);
-						text("3", b3X-15, b3Y+15);
+						text("2", b3X-15, b3Y+15);
 					  
 						  
 						//Drawwing the hexagon button 
@@ -237,26 +270,27 @@
 						stroke(bC4);
 						strokeWeight(8);
 						fill(baseColor);
-						polygon(b4X, b4Y, buttonSize, 6);  // Hexagon
+						polygon(b4X, b4Y, buttonSize, 200);  // Hexagon
 						popMatrix();
 						popStyle();
 						//Button Characters
 						fill(bC4);
-						text("4", b4X-15, b4Y+15);
+						text("3", b4X-15, b4Y+15);
 						
-						  
+						
 						//Drawwing the hexagon button 
 						pushStyle();
 						pushMatrix();
 						stroke(bC5);
 						strokeWeight(8);
 						fill(baseColor);
-						polygon(b5X, b5Y, buttonSize, 6);  // Hexagon
+						rect(b5X, b5Y, 300, 75, 20);
+						//polygon(b5X, b5Y, buttonSize, 100);  // Hexagon
 						popMatrix();
 						popStyle();
 						//Button Characters
 						fill(bC5);
-						text("5", b5X-15, b5Y+15);
+						text("Phone", b5X+75, b5Y+55);
 					  
 						  
 						//Drawwing the hexagon button 
@@ -265,18 +299,25 @@
 						stroke(bC6);
 						strokeWeight(8);
 						fill(baseColor);
-						polygon(b6X, b6Y, buttonSize, 6);  // Hexagon
+						rect(b6X, b6Y, 300, 75, 20);
+					   // polygon(b6X, b6Y, buttonSize, 100);  // Hexagon
 						popMatrix();
 						popStyle();
 						//Button Characters
 						fill(bC6);
-						text("6", b6X-15, b6Y+15);
+						text("Emergency", b6X+22, b6Y+55);
 					  
 					  
 						
 						if (s == timer) {
 						  bC1 = bC2 = bC3 = bC4 = bC5 = bC6 = color(100,100,100);
+						if (bFloor1 == true) {currentFloor = 1;}
+						if (bFloor2 == true) {currentFloor = 2;}
+						if (bFloor3 == true) {currentFloor = 3;}
+						  bFloor1 = bFloor2 = bFloor3 = false;
 						}
+						
+						
 						
 					  }
 					  
@@ -296,27 +337,27 @@
 					  
 					  
 					  void update(int x, int y) {
-						if ( overButton(b1X, b1Y, buttonSize) ) {
+						if ( overRect(b1X, b1Y, 300, 75) ) {
 						  //bC1 = highlightColor;
 						  bOver1 = true;
 						}
-						else if ( overButton(b2X, b2Y, buttonSize) ) {
+						else if ( overCircle(b2X, b2Y, buttonSize) ) {
 						  //bC2 = highlightColor;
 						  bOver2 = true;
 						}
-						else if ( overButton(b3X, b3Y, buttonSize) ) {
+						else if ( overCircle(b3X, b3Y, buttonSize) ) {
 						 //strokeColor = colot(100, 100,100);
 						  bOver3 = true;
 						}
-						else if ( overButton(b4X, b4Y, buttonSize) ) {
+						else if ( overCircle(b4X, b4Y, buttonSize) ) {
 						 //strokeColor = colot(100, 100,100);
 						  bOver4 = true;
 						}
-						else if ( overButton(b5X, b5Y, buttonSize) ) {
+						else if ( overRect(b5X, b5Y, 300, 75) ) {
 						 //strokeColor = colot(100, 100,100);
 						  bOver5 = true;
 						}
-						else if ( overButton(b6X, b6Y, buttonSize) ) {
+						else if ( overRect(b6X, b6Y, 300, 75) ) {
 						 //strokeColor = colot(100, 100,100);
 						  bOver6 = true;
 						}
@@ -337,6 +378,7 @@
 						else if (bOver2) {
 						   bC2 = highlightColor;
 						   timer = s + 2;
+						   bFloor1 = true;
 						   if (timer > 60){
 							 timer = 3;
 						   }
@@ -344,6 +386,7 @@
 						else if (bOver3) {
 						   bC3 = highlightColor;
 						   timer = s + 2;
+						   bFloor2 = true;
 						   if (timer > 60){
 							 timer = 3;
 						   }
@@ -351,6 +394,7 @@
 						else if (bOver4) {
 						   bC4 = highlightColor;
 						   timer = s + 2;
+						   bFloor3 = true;
 						   if (timer > 60){
 							 timer = 3;
 						   }
@@ -371,8 +415,16 @@
 						}
 					  }
 					  
+					  boolean overRect(float x, float y, float width, float height)  {
+						if (mouseX >= x && mouseX <= x+width && 
+							mouseY >= y && mouseY <= y+height) {
+						  return true;
+						} else {
+						  return false;
+						}
+					  }
 					  
-					  boolean overButton(float x, float y, float diameter)  {
+					  boolean overCircle(float x, float y, float diameter)  {
 						float disX = x - mouseX;
 						float disY = y - mouseY;
 						if (sqrt(sq(disX) + sq(disY)) < diameter/2 ) {
@@ -381,7 +433,6 @@
 						  return false;
 						}
 					  }
-			
 			
 					</script>
 					<canvas> </canvas>
